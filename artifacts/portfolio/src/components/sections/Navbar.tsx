@@ -7,8 +7,7 @@ import { cn } from "@/lib/utils";
 const scrollLinks = [
   { name: "About", href: "#about" },
   { name: "Expertise", href: "#expertise" },
-  { name: "Research", href: "#research" },
-  { name: "Publications", href: "#publications" },
+  { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
 ];
 

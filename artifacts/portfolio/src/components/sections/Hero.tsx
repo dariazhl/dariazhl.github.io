@@ -53,9 +53,9 @@ export function Hero() {
             <Button
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 text-sm uppercase tracking-wider font-mono"
-              onClick={() => document.getElementById("research")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" })}
             >
-              View Research
+              View Experience
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button

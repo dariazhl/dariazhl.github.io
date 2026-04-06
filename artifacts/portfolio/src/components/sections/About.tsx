@@ -3,35 +3,33 @@ import { motion } from "framer-motion";
 
 export function About() {
   return (
-    <Section id="about" className="bg-card">
-      <SectionHeader 
-        title="Executive Summary" 
-        subtitle="Bridging Depth & Vision" 
+    <Section id="about" className="bg-background">
+      <SectionHeader
+        title="About"
+        subtitle="The Profile"
       />
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
         <div className="lg:col-span-5 space-y-6">
-          <div className="text-4xl font-serif text-white/90 leading-tight">
-            Transforming complex data into <span className="text-primary italic">production-ready</span> platforms.
+          <div className="text-3xl md:text-4xl font-serif text-white/90 leading-tight">
+            Deep technical expertise. <span className="text-primary italic">Strategic</span> architectural vision.
           </div>
-          <div className="font-mono text-sm text-muted-foreground uppercase tracking-widest pt-4 border-t border-border/50">
-            MSc Computer Science <br/>
-            BSc Computer Engineering
+          <div className="font-mono text-sm text-muted-foreground uppercase tracking-widest pt-4 border-t border-border/50 space-y-1">
+            <div>MSc Computer Science</div>
+            <div>BSc Computer Engineering</div>
+            <div className="text-primary/70">Copenhagen, Denmark</div>
           </div>
         </div>
-        
-        <div className="lg:col-span-7 space-y-8 text-muted-foreground leading-relaxed text-lg font-light">
+
+        <div className="lg:col-span-7 space-y-6 text-muted-foreground leading-relaxed text-lg font-light">
           <p>
-            I operate at the intersection of deep technical rigor and strategic architecture. As an AI Architect transitioning into Managing Architecture, my focus is on designing scalable, robust machine learning systems that survive contact with the real world.
+            Computer engineer with a proven track record delivering production-ready AI and data systems at enterprise scale. Transitioning into Managing Architecture, bringing both deep technical specialization and the cross-functional leadership to execute on it.
           </p>
           <p>
-            My specialization lies in AI Safety, Interpretability, and Alignment. I don't just build models; I build systems that can be understood, controlled, and governed. From deploying LLMs that resist prompt injection to architecting MLOps pipelines for continuous evaluation, I ensure technical excellence translates into organizational capability.
+            Specializing in AI Safety, Interpretability, and Alignment — building systems that are not just performant, but governable. From XAI-driven LLM evaluation to AI governance toolkits, my work is defined by rigor, responsibility, and the ability to translate technical decisions into organizational impact.
           </p>
-          <p>
-            I lead cross-functional teams to tackle ambiguity. Whether evaluating Llama models using XAI methods like SHAP and LIME, or designing governance toolkits, my work is defined by precision, responsibility, and an uncompromising standard of engineering.
-          </p>
-          
-          <div className="pt-8 flex gap-8 border-t border-border/50">
+
+          <div className="pt-6 flex gap-8 border-t border-border/50">
             <div>
               <div className="text-3xl font-serif text-white mb-1">01</div>
               <div className="font-mono text-xs uppercase tracking-wider">AI Safety</div>

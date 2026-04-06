@@ -7,10 +7,10 @@ import NotFound from "@/pages/not-found";
 
 import { Navbar } from "./components/sections/Navbar";
 import { Hero } from "./components/sections/Hero";
+import { CareerHighlights } from "./components/sections/CareerHighlights";
 import { About } from "./components/sections/About";
 import { Expertise } from "./components/sections/Expertise";
-import { Research } from "./components/sections/Research";
-import { Publications } from "./components/sections/Publications";
+import { Experience } from "./components/sections/Experience";
 import { Testimonials } from "./components/sections/Testimonials";
 import { Contact } from "./components/sections/Contact";
 import BlogPage from "./pages/BlogPage";
@@ -37,10 +37,10 @@ function Portfolio() {
       <Navbar />
       <main>
         <Hero />
+        <CareerHighlights />
         <About />
         <Expertise />
-        <Research />
-        <Publications />
+        <Experience />
         <Testimonials />
         <Contact />
       </main>
