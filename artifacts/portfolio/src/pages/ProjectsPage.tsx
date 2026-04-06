@@ -131,13 +131,13 @@ function RepoCard({ repo, index }: { repo: Repo; index: number }) {
   );
 }
 
-type FilterLang = "All" | string;
+const YEAR_FILTERS = ["All", "2026", "2025", "2024"];
 
 export default function ProjectsPage() {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState<FilterLang>("All");
+  const [filter, setFilter] = useState("All");
 
   useEffect(() => {
     document.title = "Projects | Daria Zahaleanu";
@@ -179,8 +179,9 @@ export default function ProjectsPage() {
     fetchRepos();
   }, []);
 
-  const languages = ["All", ...Array.from(new Set(repos.map((r) => r.language).filter(Boolean) as string[]))];
-  const visible = filter === "All" ? repos : repos.filter((r) => r.language === filter);
+  const visible = filter === "All"
+    ? repos
+    : repos.filter((r) => new Date(r.updated_at).getFullYear().toString() === filter);
 
   return (
     <div className="min-h-screen bg-background text-foreground pt-32 pb-24 px-6 md:px-12">
@@ -217,25 +218,25 @@ export default function ProjectsPage() {
           </a>
         </motion.div>
 
-        {/* Language filter */}
-        {!loading && !error && languages.length > 1 && (
+        {/* Year filter */}
+        {!loading && !error && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.2 }}
             className="flex flex-wrap gap-2 mb-10"
           >
-            {languages.map((lang) => (
+            {YEAR_FILTERS.map((year) => (
               <button
-                key={lang}
-                onClick={() => setFilter(lang)}
+                key={year}
+                onClick={() => setFilter(year)}
                 className={`px-4 py-1.5 font-mono text-xs uppercase tracking-widest border transition-all duration-200 ${
-                  filter === lang
+                  filter === year
                     ? "bg-primary text-background border-primary"
                     : "border-border/50 text-muted-foreground hover:border-primary/50 hover:text-white"
                 }`}
               >
-                {lang}
+                {year}
               </button>
             ))}
           </motion.div>
