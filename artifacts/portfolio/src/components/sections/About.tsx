@@ -15,6 +15,7 @@ export function About() {
             Deep technical expertise. <span className="text-primary italic">Strategic</span> architectural vision.
           </div>
           <div className="font-mono text-sm text-muted-foreground uppercase tracking-widest pt-4 border-t border-border/50 space-y-1">
+            <div>PhD Artificial Intellingece (ongoing)</div>
             <div>MSc Computer Science</div>
             <div>BSc Computer Engineering</div>
             <div className="text-primary/70">Copenhagen, Denmark</div>

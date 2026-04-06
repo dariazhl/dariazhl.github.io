@@ -4,34 +4,34 @@ import { Shield, BrainCircuit, Activity, Cpu, Network, Code2 } from "lucide-reac
 
 const expertise = [
   {
-    title: "AI Safety & Alignment",
-    description: "Designing systems that remain safe, controllable, and aligned with human intent under scale and pressure.",
-    icon: Shield,
-  },
-  {
-    title: "Mechanistic Interpretability",
-    description: "Reverse-engineering neural networks to understand the algorithms encoded in their weights.",
+    title: "NLP & LLM Systems",
+    description: "Building NLP systems for language understanding tasks, LLM evaluation frameworks, task benchmarks, and prompt evaluation pipelines.",
     icon: BrainCircuit,
   },
   {
-    title: "Explainability Methods",
-    description: "Implementing SHAP, LIME, and Chain-of-Thought approaches to make opaque models auditable.",
-    icon: Activity,
-  },
-  {
-    title: "Production MLOps",
-    description: "Architecting end-to-end ML pipelines from data ingestion to deployment, monitoring, and governance.",
+    title: "Generative AI & Agents",
+    description: "Designing RAG pipelines with vector search and embedding layers, agent orchestration patterns, tool-calling agents, and prompt engineering.",
     icon: Network,
   },
   {
-    title: "AI Control Strategies",
-    description: "Developing robust mitigation strategies against prompt injection, goal hijacking, and data leakage.",
+    title: "Backend & Data Engineering",
+    description: "Python, FastAPI services, REST API design, SQL and relational data modeling, data ingestion pipelines for ML workflows, event-driven architectures (Kafka).",
+    icon: Code2,
+  },
+  {
+    title: "Cloud & MLOps",
+    description: "AWS, Azure, GCP, containerization (Docker), orchestration (Kubernetes), CI/CD pipelines, model deployment and serving, monitoring, drift detection.",
     icon: Cpu,
   },
   {
-    title: "Core Engineering",
-    description: "Writing performant, production-grade Python, PyTorch, and TensorFlow code.",
-    icon: Code2,
+    title: "AI Evaluation",
+    description: "Designing benchmarking utilities, evaluation workflows, and model behavior analysis frameworks for production LLM and agentic systems.",
+    icon: Activity,
+  },
+  {
+    title: "AI Safety & Governance",
+    description: "Implementing responsible AI practices — prompt injection defense, fairness evaluation, and measurable behavior in production AI models.",
+    icon: Shield,
   }
 ];
 

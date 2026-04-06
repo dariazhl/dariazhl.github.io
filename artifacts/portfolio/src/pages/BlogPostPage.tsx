@@ -104,7 +104,7 @@ export default function BlogPostPage() {
       author: {
         "@type": "Person",
         name: "Daria Zahaleanu",
-        jobTitle: "Senior AI Architect",
+        jobTitle: "AI Architect / Engineer",
         url: window.location.origin,
       },
       publisher: {
@@ -224,7 +224,7 @@ export default function BlogPostPage() {
             </div>
             <div>
               <p className="text-sm font-medium text-white">Daria Zahaleanu</p>
-              <p className="text-xs text-muted-foreground font-mono uppercase tracking-widest">Senior AI Architect</p>
+              <p className="text-xs text-muted-foreground font-mono uppercase tracking-widest">AI Architect / Engineer</p>
             </div>
           </div>
         </div>

@@ -4,48 +4,63 @@ import { ArrowUpRight } from "lucide-react";
 
 const jobs = [
   {
-    company: "Independent AI Research",
-    title: "Senior AI Architect",
-    period: "2023 – Present",
-    location: "Remote",
+    company: "Netcompany",
+    title: "Senior Software Engineer",
+    period: "Feb 2023 – Present",
+    location: "Copenhagen, Denmark",
     category: "Current",
-    description: "Designing and building production-ready AI governance systems with a focus on safety, interpretability, and alignment. Leading independent research on LLM evaluation and explainability.",
+    description: "Fastest growing and most successful IT service company in Northern Europe. Architecting and delivering backend systems and AI-enabled workflows at scale, serving over 3 million users.",
     highlights: [
-      "Built AI Safety Toolkit covering prompt injection, fairness, goal hijacking, and data leakage detection",
-      "Evaluated Llama models on LIAR dataset using comparative XAI methods (SHAP, LIME, Chain-of-Thought)",
-      "Authored technical publications on MiniCheck fact-checking and NRFE fake news detection methods",
-      "Designed multi-stage LLM pipelines with auditability and explainable-by-default architecture"
+      "Architected and delivered backend systems supporting data-intensive and AI-enabled workflows, including LLM-driven components, used by 3M+ users",
+      "Led end-to-end system design spanning API development, data ingestion, service orchestration, and AI execution flows",
+      "Built scalable backend services and data pipelines for large-scale distributed systems",
+      "Led a 10-person cross-functional team, acting as technical decision-maker on architecture and delivery"
     ],
-    tags: ["AI Safety", "XAI", "LLMs", "MLOps", "Python", "PyTorch"]
+    tags: ["Python", "LLMs", "Backend", "API Design", "Data Engineering", "Team Lead"]
   },
   {
-    company: "Netcompany",
-    title: "IT Consultant",
-    period: "Feb 2022 – 2023",
+    company: "Stealth Start-up",
+    title: "AI Engineer (part-time)",
+    period: "Oct 2025 – Apr 2025",
+    location: "Remote, United States",
+    category: "Current",
+    description: "Start-up building tools and educational resources that help organizations implement responsible AI. Building evaluation frameworks and modular pipelines for LLM-powered applications.",
+    highlights: [
+      "Developed internal tooling and experimentation frameworks for building and evaluating LLM-powered applications",
+      "Built modular pipelines for prompt orchestration, retrieval augmentation, and evaluation of model outputs",
+      "Contributed to the development of an online platform providing implementation frameworks for AI adoption",
+      "Designed benchmarking utilities and evaluation workflows to analyze model behavior"
+    ],
+    tags: ["LLM Evaluation", "RAG", "Prompt Engineering", "GenAI", "Python", "Responsible AI"]
+  },
+  {
+    company: "Microsoft",
+    title: "Software Engineering Intern",
+    period: "Apr 2022 – Jan 2023",
     location: "Copenhagen, Denmark",
     category: "Industry",
-    description: "Delivered large-scale software architecture and digital transformation engagements for enterprise clients across Northern Europe. Worked within one of the fastest-growing IT service companies in the region.",
+    description: "Built AI-powered backend services and analytics pipelines integrated into Dynamics 365, supporting NLP-driven insights and model performance monitoring.",
     highlights: [
-      "Designed and deployed scalable web platform features using Java and TypeScript, improving system performance by 35%",
-      "Architected high-traffic systems applying design patterns that reduced data processing time by 30%",
-      "Led a team of 10 engineers on a 6-month digital transformation project, delivering $50k under budget",
-      "Applied SE best practices across the full development lifecycle on mission-critical client systems"
+      "Built AI-powered backend services and analytics pipelines integrated into Dynamics 365, supporting NLP-driven insights",
+      "Designed data pipelines and evaluation dashboards to monitor model performance and user impact",
+      "Defined evaluation metrics to assess NLP system correctness, reliability, and downstream business impact",
+      "Contributed to internal AI adoption workshops, bridging technical feasibility with business value"
     ],
-    tags: ["Java", "TypeScript", "System Architecture", "Digital Transformation", "Team Lead"]
+    tags: ["NLP", "Dynamics 365", "Data Pipelines", "AI Evaluation", "Backend", "Python"]
   },
   {
-    company: "Academic Research",
-    title: "MSc Researcher",
-    period: "2020 – 2022",
-    location: "University",
-    category: "Research",
-    description: "Graduate research in machine learning and data science, with a focus on sampling bias in large-scale mobility datasets. Developed novel statistical mitigation strategies with downstream ML applications.",
+    company: "Brooklyn Investment Group",
+    title: "Machine Learning Engineer Intern",
+    period: "May – Jul 2019",
+    location: "New York City, NY",
+    category: "Industry",
+    description: "Company using AI models to forecast legal and regulatory risk affecting markets. Built and evaluated ML models and NLP pipelines for risk forecasting.",
     highlights: [
-      "Master's thesis: Biases in Human Mobility Data — novel bias detection and correction methodologies",
-      "Published two-part sampling bias research series covering systematic and random data collection biases",
-      "Applied Python, statistical analysis, and ML evaluation frameworks throughout research lifecycle"
+      "Built and evaluated classical ML models (logistic regression, tree-based models) alongside NLP pipelines for forecasting",
+      "Designed training and validation workflows using cross-validation and precision/recall metrics",
+      "Deployed early-stage models to cloud environments (AWS, GCP), balancing accuracy with operational constraints"
     ],
-    tags: ["Machine Learning", "Statistics", "Data Science", "Python", "Research"]
+    tags: ["ML Models", "NLP", "AWS", "GCP", "Python", "Risk Forecasting"]
   }
 ];
 

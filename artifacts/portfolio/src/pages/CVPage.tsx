@@ -21,24 +21,46 @@ const education = [
 
 const experience = [
   {
-    title: "Senior AI Architect",
-    company: "Independent / Research",
-    period: "2023 – Present",
+    title: "Senior Software Engineer",
+    company: "Netcompany",
+    period: "Feb 2023 – Present",
     points: [
-      "Architecting production-ready AI systems with a focus on safety, interpretability, and governance.",
-      "Developing AI Safety Toolkit demonstrating real-world governance checks: prompt injection, fairness, goal hijacking, sensitive data leakage.",
-      "Evaluating Llama models on LIAR dataset using comparative XAI methods (SHAP, LIME, Chain-of-Thought).",
-      "Authoring technical articles on AI interpretability and fact-checking methods for practitioner audiences."
+      "Architected and delivered backend systems supporting data-intensive and AI-enabled workflows, including LLM-driven components, used by 3M+ users.",
+      "Led end-to-end system design spanning API development, data ingestion, service orchestration, and AI execution flows.",
+      "Built scalable backend services and data pipelines for large-scale distributed systems.",
+      "Led a 10-person cross-functional team, acting as technical decision-maker on architecture and delivery."
     ]
   },
   {
-    title: "AI/ML Engineer",
-    company: "Professional Experience",
-    period: "2022 – 2023",
+    title: "AI Engineer (part-time)",
+    company: "Stealth Start-up",
+    period: "Oct 2025 – Present",
     points: [
-      "Transformed complex datasets into production-ready ML platforms.",
-      "Implemented explainability frameworks and model evaluation pipelines.",
-      "Collaborated with cross-functional stakeholders to translate technical findings into organizational capability."
+      "Developed internal tooling and experimentation frameworks for building and evaluating LLM-powered applications.",
+      "Built modular pipelines for prompt orchestration, retrieval augmentation, and evaluation of model outputs.",
+      "Contributed to the development of an online platform providing implementation frameworks for AI adoption.",
+      "Designed benchmarking utilities and evaluation workflows to analyze model behavior."
+    ]
+  },
+  {
+    title: "Software Engineering Intern",
+    company: "Microsoft",
+    period: "Apr 2022 – Jan 2023",
+    points: [
+      "Built AI-powered backend services and analytics pipelines integrated into Dynamics 365, supporting NLP-driven insights.",
+      "Designed data pipelines and evaluation dashboards to monitor model performance and user impact.",
+      "Defined evaluation metrics to assess NLP system correctness, reliability, and downstream business impact.",
+      "Contributed to internal AI adoption workshops, bridging technical feasibility with business value."
+    ]
+  },
+  {
+    title: "Machine Learning Engineer Intern",
+    company: "Brooklyn Investment Group",
+    period: "May – Jul 2019",
+    points: [
+      "Built and evaluated classical ML models (logistic regression, tree-based models) alongside NLP pipelines for forecasting.",
+      "Designed training and validation workflows using cross-validation and precision/recall metrics.",
+      "Deployed early-stage models to cloud environments (AWS, GCP), balancing accuracy with operational constraints."
     ]
   }
 ];
@@ -97,7 +119,7 @@ export default function CVPage() {
                 Daria Zahaleanu
               </h1>
               <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest mt-2">
-                Senior AI Architect — Managing Architect
+                AI Architect / Engineer
               </p>
             </div>
             <a href={cvPdfUrl} download="Daria_Zahaleanu_CV.pdf">
@@ -224,11 +246,11 @@ export default function CVPage() {
           <div>
             <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest mb-1">Get in touch</p>
             <a
-              href="mailto:anadaria.zahaleanu@gmail.com"
+              href="mailto:daria.zahaleanu@gmail.com"
               className="inline-flex items-center gap-2 text-white hover:text-primary transition-colors"
             >
               <Mail className="w-4 h-4" />
-              anadaria.zahaleanu@gmail.com
+              daria.zahaleanu@gmail.com
             </a>
           </div>
           <a href={cvPdfUrl} download="Daria_Zahaleanu_CV.pdf">

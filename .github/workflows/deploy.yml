@@ -1,0 +1,53 @@
+name: Deploy Portfolio to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build portfolio
+        run: pnpm --filter @workspace/portfolio build
+        env:
+          PORT: 3000
+          BASE_PATH: /
+
+      - name: Checkout GitHub Pages repo
+        uses: actions/checkout@v4
+        with:
+          repository: dariazhl/dariazhl.github.io
+          token: ${{ secrets.GH_PAGES_TOKEN }}
+          path: gh-pages
+
+      - name: Copy build output
+        run: |
+          rm -rf gh-pages/*
+          cp -r artifacts/portfolio/dist/public/. gh-pages/
+
+      - name: Commit and push to GitHub Pages repo
+        run: |
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Deploy from ${{ github.sha }}"
+          git push

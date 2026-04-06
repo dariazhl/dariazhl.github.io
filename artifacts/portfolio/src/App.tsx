@@ -17,12 +17,13 @@ import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import CVPage from "./pages/CVPage";
+import ResumePage from "./pages/ResumePage";
 
 const queryClient = new QueryClient();
 
 function Portfolio() {
   useEffect(() => {
-    document.title = "Daria Zahaleanu | Senior AI Architect";
+    document.title = "Daria (Eryn) H. Zahaleanu | AI Architect / Engineer";
     let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
     if (!meta) {
       meta = document.createElement("meta");
@@ -30,7 +31,7 @@ function Portfolio() {
       document.head.appendChild(meta);
     }
     meta.content =
-      "Portfolio of Daria Zahaleanu, Senior AI Architect transitioning into Managing Architect roles. Specializing in AI Safety, Interpretability, and Alignment.";
+      "Portfolio of Daria Zahaleanu, AI Architect and Engineer focused on NLP, GenAI systems, and evaluation of production AI models.";
   }, []);
 
   return (
@@ -43,7 +44,7 @@ function Portfolio() {
         <About />
         <Expertise />
         <Experience />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Contact />
       </main>
 
@@ -101,6 +102,19 @@ function ProjectsWrapper() {
   );
 }
 
+function ResumeWrapper() {
+  useEffect(() => {
+    document.title = "Resume | Daria Zahaleanu";
+  }, []);
+  return (
+    <div className="min-h-screen bg-background text-foreground relative">
+      <div className="bg-noise" />
+      <Navbar />
+      <ResumePage />
+    </div>
+  );
+}
+
 function CVWrapper() {
   useEffect(() => {
     document.title = "CV | Daria Zahaleanu";
@@ -127,6 +141,7 @@ function Router() {
       <Route path="/blog/:slug" component={BlogPostWrapper} />
       <Route path="/projects" component={ProjectsWrapper} />
       <Route path="/cv" component={CVWrapper} />
+      <Route path="/resume" component={ResumeWrapper} />
       <Route component={NotFound} />
     </Switch>
   );

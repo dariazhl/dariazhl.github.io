@@ -14,7 +14,6 @@ const scrollLinks = [
 const pageLinks = [
   { name: "Projects", href: "/projects" },
   { name: "Blog", href: "/blog" },
-  { name: "CV", href: "/cv" },
 ];
 
 export function Navbar() {

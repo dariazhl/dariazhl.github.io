@@ -29,9 +29,9 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-[1.1] text-white mb-6"
           >
-            Senior <br />
+            AI Architect <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">
-              AI Architect
+              / Engineer
             </span>
           </motion.h1>
 

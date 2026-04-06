@@ -131,7 +131,7 @@ function RepoCard({ repo, index }: { repo: Repo; index: number }) {
   );
 }
 
-const YEAR_FILTERS = ["All", "2026", "2025", "2024"];
+const YEAR_FILTERS = ["All", "2026", "2025"];
 
 export default function ProjectsPage() {
   const [repos, setRepos] = useState<Repo[]>([]);
