@@ -8,6 +8,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Restore path from GitHub Pages 404 redirect
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get('p');
+        var h = params.get('h');
+        if (p) {
+          window.history.replaceState(null, null, p + (h || ''));
+        }
+      })();
+    </script>
     <script type="module" crossorigin src="/assets/index-D_GUePZ8.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-B-nkdd9Y.css">
   </head>
