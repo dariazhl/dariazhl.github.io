@@ -14,6 +14,7 @@ import { Experience } from "./components/sections/Experience";
 import { Testimonials } from "./components/sections/Testimonials";
 import { Contact } from "./components/sections/Contact";
 import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
 import CVPage from "./pages/CVPage";
 
 const queryClient = new QueryClient();
@@ -55,14 +56,26 @@ function Portfolio() {
 }
 
 function BlogWrapper() {
-  useEffect(() => {
-    document.title = "Blog | Daria Zahaleanu";
-  }, []);
   return (
     <div className="min-h-screen bg-background text-foreground relative">
       <div className="bg-noise" />
       <Navbar />
       <BlogPage />
+      <footer className="py-8 text-center border-t border-border/50 bg-background">
+        <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
+          © {new Date().getFullYear()} Daria Zahaleanu. All rights reserved.
+        </p>
+      </footer>
+    </div>
+  );
+}
+
+function BlogPostWrapper() {
+  return (
+    <div className="min-h-screen bg-background text-foreground relative">
+      <div className="bg-noise" />
+      <Navbar />
+      <BlogPostPage />
       <footer className="py-8 text-center border-t border-border/50 bg-background">
         <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
           © {new Date().getFullYear()} Daria Zahaleanu. All rights reserved.
@@ -95,6 +108,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Portfolio} />
       <Route path="/blog" component={BlogWrapper} />
+      <Route path="/blog/:slug" component={BlogPostWrapper} />
       <Route path="/cv" component={CVWrapper} />
       <Route component={NotFound} />
     </Switch>
