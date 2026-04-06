@@ -24,7 +24,7 @@ export function About() {
 
         <div className="lg:col-span-7 space-y-6 text-muted-foreground leading-relaxed text-lg font-light">
           <p>
-            Computer engineer with a proven track record delivering production-ready AI and data systems at enterprise scale. Transitioning into Managing Architecture, bringing both deep technical specialization and the cross-functional leadership to execute on it.
+            Computer engineer with a proven track record delivering production-ready AI and data systems at enterprise scale.
           </p>
           <p>
             Specializing in AI Safety, Interpretability, and Alignment — building systems that are not just performant, but governable. From XAI-driven LLM evaluation to AI governance toolkits, my work is defined by rigor, responsibility, and the ability to translate technical decisions into organizational impact.

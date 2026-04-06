@@ -53,7 +53,7 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           <Link href="/">
             <div className="font-serif text-xl font-bold text-white tracking-tight cursor-pointer hover:text-primary transition-colors">
-              DZ<span className="text-primary">.</span>
+              Daria (Eryn) H. Zahaleanu
             </div>
           </Link>
 

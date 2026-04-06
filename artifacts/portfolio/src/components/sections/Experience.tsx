@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 const jobs = [
   {
     company: "Netcompany",
-    title: "Senior Software Engineer",
+    title: "Senior Lead Software Engineer",
     period: "Feb 2023 – Present",
     location: "Copenhagen, Denmark",
     category: "Current",
@@ -35,16 +35,14 @@ const jobs = [
   },
   {
     company: "Microsoft",
-    title: "Software Engineering Intern",
+    title: "Product & Engineering Intern",
     period: "Apr 2022 – Jan 2023",
     location: "Copenhagen, Denmark",
     category: "Industry",
-    description: "Built AI-powered backend services and analytics pipelines integrated into Dynamics 365, supporting NLP-driven insights and model performance monitoring.",
+    description: "Researched and identified new customer experience enhancement features in the Dynamics 365 platform, collaborating across engineering, product, and design teams.",
     highlights: [
-      "Built AI-powered backend services and analytics pipelines integrated into Dynamics 365, supporting NLP-driven insights",
-      "Designed data pipelines and evaluation dashboards to monitor model performance and user impact",
-      "Defined evaluation metrics to assess NLP system correctness, reliability, and downstream business impact",
-      "Contributed to internal AI adoption workshops, bridging technical feasibility with business value"
+      "Researched and identified new customer experience enhancement features in the Dynamics 365 platform",
+      "Collaborated with engineering, product, and design teams to translate platform capabilities into customer-facing features"
     ],
     tags: ["NLP", "Dynamics 365", "Data Pipelines", "AI Evaluation", "Backend", "Python"]
   },

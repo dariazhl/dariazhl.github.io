@@ -36,6 +36,15 @@ function truncate(text: string, max = 220): string {
   return text.slice(0, text.lastIndexOf(" ", max)) + "…";
 }
 
+interface Rss2JsonItem {
+  title: string;
+  pubDate: string;
+  link: string;
+  description: string;
+  content: string;
+  categories: string[];
+}
+
 export function useSubstackPosts(feedUrl: string) {
   const [posts, setPosts] = useState<SubstackPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -46,40 +55,26 @@ export function useSubstackPosts(feedUrl: string) {
 
     async function fetchFeed() {
       try {
-        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(feedUrl)}`;
-        const res = await fetch(proxyUrl, { signal: controller.signal });
+        const apiUrl = `https://rss2json.com/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+        const res = await fetch(apiUrl, { signal: controller.signal });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         const json = await res.json();
-        const text: string = json.contents;
-        const xml = new DOMParser().parseFromString(text, "application/xml");
+        if (json.status !== "ok") throw new Error("Feed error: " + json.message);
 
-        const parseError = xml.querySelector("parsererror");
-        if (parseError) throw new Error("Invalid RSS feed");
-
-        const items = Array.from(xml.querySelectorAll("item"));
-
-        const parsed: SubstackPost[] = items.map((item) => {
-          const title = item.querySelector("title")?.textContent?.trim() ?? "Untitled";
-          const link = item.querySelector("link")?.textContent?.trim() ?? "";
-          const pubDate = item.querySelector("pubDate")?.textContent?.trim() ?? "";
-          const description = item.querySelector("description")?.textContent?.trim() ?? "";
-          const contentEncoded =
-            item.getElementsByTagNameNS("http://purl.org/rss/1.0/modules/content/", "encoded")[0]
-              ?.textContent ?? description;
-          const category =
-            item.querySelector("category")?.textContent?.trim() || "Writing";
-
-          const excerptText = stripHtml(description || contentEncoded);
+        const parsed: SubstackPost[] = (json.items as Rss2JsonItem[]).map((item) => {
+          const content = item.content || item.description || "";
+          const excerptText = stripHtml(item.description || content);
+          const category = item.categories?.[0] || "Writing";
 
           return {
-            title,
-            link,
-            date: formatDate(pubDate),
-            dateISO: formatDateISO(pubDate),
+            title: item.title,
+            link: item.link,
+            date: formatDate(item.pubDate),
+            dateISO: formatDateISO(item.pubDate),
             excerpt: truncate(excerptText),
             category,
-            readTime: estimateReadTime(contentEncoded),
+            readTime: estimateReadTime(content),
           };
         });
 

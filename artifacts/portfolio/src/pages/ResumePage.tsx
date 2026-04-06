@@ -23,7 +23,7 @@ export default function ResumePage() {
           </h1>
 
           <p className="text-lg text-muted-foreground font-light leading-relaxed">
-            If interested in collaborating, please send me an email at{" "}
+            For access to my full CV/resume, please contact me at{" "}
             <a
               href="mailto:daria.zahaleanu@gmail.com"
               className="text-primary hover:underline"

@@ -19,7 +19,7 @@ export function Hero() {
           >
             <div className="w-12 h-[1px] bg-primary"></div>
             <span className="font-mono text-primary text-sm uppercase tracking-widest">
-              Daria Zahaleanu
+              Daria (Eryn) H. Zahaleanu
             </span>
           </motion.div>
 

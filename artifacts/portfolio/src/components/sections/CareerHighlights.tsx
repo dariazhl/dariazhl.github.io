@@ -12,8 +12,8 @@ const highlights = [
     context: "Digital Transformation"
   },
   {
-    stat: "MSc",
-    label: "Computer Science",
+    stat: "PhD (On-going) and MSc",
+    label: "Artificial Intelligence",
     context: "AI & Systems Research"
   },
   {
@@ -37,7 +37,15 @@ export function CareerHighlights() {
               transition={{ duration: 0.4, delay: index * 0.08 }}
               className="px-8 py-8 md:py-10 flex flex-col gap-1"
             >
-              <div className="text-3xl md:text-4xl font-serif text-primary">{item.stat}</div>
+              {item.stat.includes(" and ") ? (
+                <div className="font-serif text-primary text-base md:text-lg leading-snug">
+                  {item.stat.split(" and ").map((part, i, arr) => (
+                    <div key={i}>{part}{i < arr.length - 1 ? " +" : ""}</div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-3xl md:text-4xl font-serif text-primary">{item.stat}</div>
+              )}
               <div className="text-sm text-white font-medium">{item.label}</div>
               <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest">{item.context}</div>
             </motion.div>

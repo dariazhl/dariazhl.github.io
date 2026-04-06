@@ -26,7 +26,7 @@ export function Contact() {
           </h2>
 
           <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">
-            Currently exploring Managing Architect and Principal Engineering roles at organizations tackling high-stakes AI alignment and infrastructure challenges.
+            Currently exploring AI Architect and AI Engineer roles at organizations tackling high-stakes AI alignment and infrastructure challenges.
           </p>
         </motion.div>
 
