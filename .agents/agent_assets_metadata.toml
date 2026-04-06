@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "q9DdzGseaKFyr5r-glIw_"
+uri = "file://artifacts/portfolio/public/images/portrait.png"
+type = "image"
+title = "Abstract professional AI architect portrait"
