@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowLeft, ArrowUpRight, Star, GitFork, Calendar, Code2, Loader2 } from "lucide-react";
 
-const GITHUB_USERNAME = "daria0406";
+const GITHUB_USERNAME = "dariazhl";
 
 const LANGUAGE_COLORS: Record<string, string> = {
   Python: "#3572A5",
