@@ -15,6 +15,7 @@ import { Testimonials } from "./components/sections/Testimonials";
 import { Contact } from "./components/sections/Contact";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import ProjectsPage from "./pages/ProjectsPage";
 import CVPage from "./pages/CVPage";
 
 const queryClient = new QueryClient();
@@ -85,6 +86,21 @@ function BlogPostWrapper() {
   );
 }
 
+function ProjectsWrapper() {
+  return (
+    <div className="min-h-screen bg-background text-foreground relative">
+      <div className="bg-noise" />
+      <Navbar />
+      <ProjectsPage />
+      <footer className="py-8 text-center border-t border-border/50 bg-background">
+        <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
+          © {new Date().getFullYear()} Daria Zahaleanu. All rights reserved.
+        </p>
+      </footer>
+    </div>
+  );
+}
+
 function CVWrapper() {
   useEffect(() => {
     document.title = "CV | Daria Zahaleanu";
@@ -109,6 +125,7 @@ function Router() {
       <Route path="/" component={Portfolio} />
       <Route path="/blog" component={BlogWrapper} />
       <Route path="/blog/:slug" component={BlogPostWrapper} />
+      <Route path="/projects" component={ProjectsWrapper} />
       <Route path="/cv" component={CVWrapper} />
       <Route component={NotFound} />
     </Switch>
