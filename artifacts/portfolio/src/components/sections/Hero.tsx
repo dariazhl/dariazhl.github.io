@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Terminal } from "lucide-react";
+import dariaPhoto from "@assets/daria-photo.jpg";
 
 export function Hero() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center w-full px-6 md:px-12 pt-20 overflow-hidden">
-      {/* Abstract background shapes */}
       <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -77,20 +77,15 @@ export function Hero() {
           className="flex-1 w-full max-w-md hidden md:block"
         >
           <div className="relative aspect-[3/4] w-full">
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent border border-white/10" />
-            <img 
-              src="/images/portrait.png" 
-              alt="Daria Zahaleanu" 
-              className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700 opacity-80"
-              onError={(e) => {
-                // Fallback if image fails to load
-                (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop";
-              }}
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent border border-white/10 z-10 pointer-events-none" />
+            <img
+              src={dariaPhoto}
+              alt="Daria Zahaleanu"
+              className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700 opacity-90"
             />
-            {/* Decorative structural elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 border-t border-r border-primary/50" />
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b border-l border-primary/50" />
-            <div className="absolute bottom-6 -right-12 font-mono text-xs text-primary rotate-90 origin-bottom-left uppercase tracking-widest">
+            <div className="absolute -top-4 -right-4 w-24 h-24 border-t border-r border-primary/50 z-20" />
+            <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b border-l border-primary/50 z-20" />
+            <div className="absolute bottom-6 -right-12 font-mono text-xs text-primary rotate-90 origin-bottom-left uppercase tracking-widest z-20">
               SYS_ARCH_v2.0
             </div>
           </div>
