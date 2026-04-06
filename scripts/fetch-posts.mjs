@@ -54,7 +54,12 @@ function estimateReadTime(text) {
 }
 
 async function main() {
-  const res = await fetch(FEED_URL);
+  const res = await fetch(FEED_URL, {
+    headers: {
+      "User-Agent": "Mozilla/5.0 (compatible; RSS reader)",
+      "Accept": "application/rss+xml, application/xml, text/xml, */*",
+    },
+  });
   if (!res.ok) throw new Error(`Failed to fetch feed: HTTP ${res.status}`);
   const xml = await res.text();
 
@@ -94,6 +99,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error(err);
-  process.exit(1);
+  console.error("Warning: could not fetch posts, keeping existing posts.json.", err.message);
+  process.exit(0);
 });
