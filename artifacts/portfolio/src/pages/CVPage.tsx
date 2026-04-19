@@ -21,7 +21,7 @@ const education = [
 
 const experience = [
   {
-    title: "Senior Lead Software Engineer",
+    title: "Lead Software Engineer",
     company: "Netcompany",
     period: "Feb 2023 – Present",
     points: [

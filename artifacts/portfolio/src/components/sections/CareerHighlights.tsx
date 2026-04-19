@@ -12,7 +12,7 @@ const highlights = [
     context: "Digital Transformation"
   },
   {
-    stat: "PhD (On-going) and MSc",
+    stat: "MSc",
     label: "Artificial Intelligence",
     context: "AI & Systems Research"
   },

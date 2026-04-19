@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 const jobs = [
   {
     company: "Netcompany",
-    title: "Senior Lead Software Engineer",
+    title: "Lead Software Engineer",
     period: "Feb 2023 – Present",
     location: "Copenhagen, Denmark",
     category: "Current",
