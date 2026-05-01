@@ -102,6 +102,19 @@ function ProjectsWrapper() {
   );
 }
 
+function CVWrapper() {
+  useEffect(() => {
+    document.title = "CV | Daria Zahaleanu";
+  }, []);
+  return (
+    <div className="min-h-screen bg-background text-foreground relative">
+      <div className="bg-noise" />
+      <Navbar />
+      <CVPage />
+    </div>
+  );
+}
+
 function ResumeWrapper() {
   useEffect(() => {
     document.title = "Resume | Daria Zahaleanu";
@@ -115,23 +128,6 @@ function ResumeWrapper() {
   );
 }
 
-function CVWrapper() {
-  useEffect(() => {
-    document.title = "CV | Daria Zahaleanu";
-  }, []);
-  return (
-    <div className="min-h-screen bg-background text-foreground relative">
-      <div className="bg-noise" />
-      <Navbar />
-      <CVPage />
-      <footer className="py-8 text-center border-t border-border/50 bg-background">
-        <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
-          © {new Date().getFullYear()} Daria Zahaleanu. All rights reserved.
-        </p>
-      </footer>
-    </div>
-  );
-}
 
 function Router() {
   return (
