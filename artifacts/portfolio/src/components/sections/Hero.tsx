@@ -19,7 +19,7 @@ export function Hero() {
           >
             <div className="w-12 h-[1px] bg-primary"></div>
             <span className="font-mono text-primary text-sm uppercase tracking-widest">
-              Daria (Eryn) H. Zahaleanu
+              Daria Zahaleanu
             </span>
           </motion.div>
 
@@ -29,10 +29,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-[1.1] text-white mb-6"
           >
-            AI Architect <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">
-              / Engineer
-            </span>
+            AI Engineer <br />
           </motion.h1>
 
           <motion.p
@@ -41,7 +38,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg md:text-xl text-muted-foreground font-light max-w-xl mb-10 leading-relaxed border-l border-border pl-6"
           >
-            Building production-ready AI systems. Leading teams that shape what's next. Bridging the gap between mechanistic interpretability and executive strategy.
+            Building production LLM systems where evaluation and reliability are first-class engineering concerns. Currently working on agentic architectures and evaluation infrastructure.
           </motion.p>
 
           <motion.div

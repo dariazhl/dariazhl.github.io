@@ -1,81 +1,91 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowLeft, ArrowUpRight, Star, GitFork, Calendar, Code2, Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Star, Calendar, Code2, Loader2 } from "lucide-react";
 
 const GITHUB_USERNAME = "dariazhl";
 
-// Category definitions
-type Category = "Agentic AI" | "Enterprise AI Infrastructure" | "AI Safety & Research";
+type Category = "LLM Systems" | "Agentic AI" | "NLP" | "Evals & Tooling";
 
-const CATEGORIES: Category[] = ["Agentic AI", "Enterprise AI Infrastructure", "AI Safety & Research"];
+const CATEGORIES: Category[] = ["LLM Systems", "Agentic AI", "NLP", "Evals & Tooling"];
 
 const CATEGORY_META: Record<Category, { index: string; description: string; accent: string }> = {
-  "Agentic AI": {
+  "LLM Systems": {
     index: "01",
-    description: "Autonomous agents, LLM orchestration pipelines, and multi-step reasoning systems.",
+    description: "Production LLM gateways, RAG pipelines, and large-scale transformer architectures.",
     accent: "#00f5c4",
   },
-  "Enterprise AI Infrastructure": {
+  "Agentic AI": {
     index: "02",
-    description: "Production-grade ML pipelines, data systems, cloud architecture, and scalable model deployment.",
+    description: "Autonomous agents, LLM orchestration pipelines, and multi-step reasoning systems.",
     accent: "#4f8ef7",
   },
-  "AI Safety & Research": {
+  "NLP": {
     index: "03",
-    description: "Interpretability, alignment, hallucination detection, fairness auditing, and AI governance toolkits.",
+    description: "Language models, fine-tuning experiments, and natural language understanding.",
+    accent: "#f59e0b",
+  },
+  "Evals & Tooling": {
+    index: "04",
+    description: "AI safety toolkits, evaluation framework and fairness auditing.",
     accent: "#c084fc",
   },
 };
 
-// Manual categorisation map — repos not listed are excluded from the portfolio view
+const AI_SAFETY_REPOS = new Set([
+  "policy-risk-analyzer",
+  "ai-toolkit-v2",
+  "AISafetyToolkit",
+  "Llama3.2-1b-SR3-NRFE-Implementation",
+]);
+
+// Repos not listed here are excluded from the portfolio view
 const REPO_CATEGORIES: Record<string, Category> = {
-  "agent-experiments":                                       "Agentic AI",
-  "CV-Scanner-App---Langchain":                             "Agentic AI",
-  "policy-risk-analyzer":                                   "Agentic AI",
-  "amoc-v4-persona-age-experiments":                        "AI Safety & Research",
-  "stratum":                                                "Enterprise AI Infrastructure",
-  "azure-ai-102":                                           "Enterprise AI Infrastructure",
-  "Sparse-Transformers-Prototype":                          "Enterprise AI Infrastructure",
-  "TLCTaxiData":                                            "Enterprise AI Infrastructure",
-  "Oxford-Summit-Loan-Application":                         "Enterprise AI Infrastructure",
-  "Predict-Bike-Demand-in-Montreal-Using-Neural-Network-using-LSTM": "Enterprise AI Infrastructure",
-  "Autonomous-Car-Project-Udacity":                         "Enterprise AI Infrastructure",
-  "llm-hallucination-and-reasoning-replications":           "AI Safety & Research",
-  "ai-toolkit-demo":                                        "AI Safety & Research",
-  "AISafetyToolkit":                                        "AI Safety & Research",
-  "SocialGraphs":                                           "AI Safety & Research",
+  "llm-gateway-with-rag":                          "LLM Systems",
+  "policy-risk-analyzer":                          "LLM Systems",
+  "stratum":                                        "LLM Systems",
+  "Sparse-Transformers-Prototype":                  "NLP",
+  "agent-experiments":                              "Agentic AI",
+  "CV-Scanner-App---Langchain":                     "Agentic AI",
+  "Oxford-Summit-Loan-Application":                 "Agentic AI",
+  "amoc-v4-persona-age-experiments":                "NLP",
+  "Llama3.2-1b-SR3-NRFE-Implementation":            "NLP",
+  "llm-hallucination-and-reasoning-replications":   "NLP",
+  "ai-toolkit-v2":                                  "Evals & Tooling",
+  "AISafetyToolkit":                                "Evals & Tooling",
 };
 
-// Nicer display names for repos
 const REPO_DISPLAY: Record<string, { title: string; description: string }> = {
-  "agent-experiments":           { title: "Agent Experiments", description: "Experimental multi-agent architectures and autonomous task execution frameworks." },
-  "CV-Scanner-App---Langchain":  { title: "CV Scanner — LangChain", description: "Intelligent CV parsing and candidate analysis pipeline built with LangChain agents." },
-  "policy-risk-analyzer":        { title: "Policy Risk Analyzer", description: "Automated policy document risk assessment using LLM-based reasoning chains." },
+  "llm-gateway-with-rag":           { title: "LLM Gateway with RAG", description: "Production LLM gateway implementing RAG." },
+  "policy-risk-analyzer":           { title: "Policy Risk Analyzer", description: "Automated policy document risk assessment using LLM-based reasoning chains." },
+  "stratum":                         { title: "Stratum", description: "Infrastructure-as-code configurations for scalable AI workload deployment on cloud environments." },
+  "Sparse-Transformers-Prototype":   { title: "Sparse Transformers Prototype", description: "Prototype implementation of sparse attention mechanisms for efficient large-scale transformer training." },
+  "agent-experiments":               { title: "Agent Experiments", description: "Experimental multi-agent architectures and autonomous task execution frameworks." },
+  "CV-Scanner-App---Langchain":      { title: "CV Scanner — LangChain", description: "CV parsing and candidate analysis pipeline built with LangChain agents." },
+  "Oxford-Summit-Loan-Application":  { title: "Oxford Summit Loan Model", description: "Credit risk scoring model using AI agents." },
   "amoc-v4-persona-age-experiments": { title: "AMOC Persona Experiments", description: "Agent-based simulation experiments exploring persona modelling and age-based behaviour patterns." },
-  "stratum":                     { title: "Stratum", description: "Infrastructure-as-code configurations for scalable AI workload deployment on cloud environments." },
-  "azure-ai-102":                { title: "Azure AI-102 Labs", description: "Production-ready implementations from the Azure AI Engineer certification, covering Cognitive Services and ML pipelines." },
-  "Sparse-Transformers-Prototype": { title: "Sparse Transformers Prototype", description: "Prototype implementation of sparse attention mechanisms for efficient large-scale transformer training." },
-  "TLCTaxiData":                 { title: "TLC Taxi Data Pipeline", description: "End-to-end ML pipeline for NYC taxi demand forecasting using large-scale mobility datasets." },
-  "Oxford-Summit-Loan-Application": { title: "Oxford Summit Loan Model", description: "Credit risk scoring model developed during an Oxford executive programme — data preprocessing to deployment." },
-  "Predict-Bike-Demand-in-Montreal-Using-Neural-Network-using-LSTM": { title: "Montreal Bike Demand — LSTM", description: "Deep learning model predicting city-wide bike-sharing demand using LSTM networks on time-series data." },
-  "Autonomous-Car-Project-Udacity": { title: "Autonomous Car — Udacity", description: "Self-driving car simulation project implementing behavioural cloning and sensor fusion pipelines." },
+  "Llama3.2-1b-SR3-NRFE-Implementation": { title: "Llama 3.2 — SR3 & NRFE", description: "Fine-tuning and inference experiments on Llama 3.2 1B using SR3 and NRFE techniques." },
   "llm-hallucination-and-reasoning-replications": { title: "LLM Hallucination & Reasoning", description: "Systematic replication of hallucination benchmarks and chain-of-thought reasoning evaluations across frontier LLMs." },
-  "ai-toolkit-demo":             { title: "AI Toolkit Demo", description: "Demonstration suite showcasing modular AI governance components for enterprise deployment." },
-  "AISafetyToolkit":             { title: "AI Safety Toolkit", description: "Production-ready toolkit covering prompt injection defences, fairness metrics, goal hijacking detection, and data leakage auditing." },
-  "SocialGraphs":                { title: "Social Graph Analysis", description: "Network analysis of social structures using graph algorithms and community detection methods." },
+  "ai-toolkit-v2":                   { title: "AI Toolkit v2", description: "Modular AI safety toolkit with extended evaluation workflows, improved fairness metrics, and production-ready safety checks." },
+  "AISafetyToolkit":                 { title: "AI Safety Toolkit", description: "Toolkit covering prompt injection defences, fairness metrics, goal hijacking detection, and data leakage auditing." },
 };
 
 const LANGUAGE_COLORS: Record<string, string> = {
-  Python: "#3572A5",
-  JavaScript: "#f1e05a",
-  TypeScript: "#2b7489",
-  Java: "#b07219",
+  Python:            "#3572A5",
+  JavaScript:        "#f1e05a",
+  TypeScript:        "#2b7489",
+  Java:              "#b07219",
   "Jupyter Notebook": "#DA5B0B",
-  HTML: "#e34c26",
-  CSS: "#563d7c",
-  HCL: "#844FBA",
-  "Objective-C": "#438eff",
+  HTML:              "#e34c26",
+  CSS:               "#563d7c",
+  HCL:               "#844FBA",
+};
+
+const CAT_PARAM_MAP: Record<string, Category> = {
+  "llm-systems": "LLM Systems",
+  "agentic-ai":  "Agentic AI",
+  "nlp":         "NLP",
+  "evals":       "Evals & Tooling",
 };
 
 interface Repo {
@@ -95,7 +105,7 @@ function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-GB", { month: "short", year: "numeric" });
 }
 
-function RepoCard({ repo, index, accent }: { repo: Repo; index: number; accent: string }) {
+function RepoCard({ repo, index, accent, isAiSafety }: { repo: Repo; index: number; accent: string; isAiSafety: boolean }) {
   const display = REPO_DISPLAY[repo.name];
   const title = display?.title ?? repo.name.replace(/-/g, " ");
   const description = display?.description ?? null;
@@ -112,37 +122,34 @@ function RepoCard({ repo, index, accent }: { repo: Repo; index: number; accent: 
       transition={{ duration: 0.45, delay: index * 0.06 }}
       className="group relative flex flex-col border border-white/8 bg-white/[0.02] hover:bg-white/[0.06] hover:border-white/20 transition-all duration-300 p-7 overflow-hidden cursor-pointer"
     >
-      {/* Top accent bar */}
       <div
         className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }}
       />
 
-      {/* Index number */}
       <div className="flex items-start justify-between gap-4 mb-4">
         <span className="font-mono text-[10px] text-white/20 uppercase tracking-widest">
           {String(index + 1).padStart(2, "0")}
         </span>
-        <ArrowUpRight
-          className="w-4 h-4 text-white/20 group-hover:text-white/70 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all flex-shrink-0"
-        />
+        <ArrowUpRight className="w-4 h-4 text-white/20 group-hover:text-white/70 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
       </div>
 
-      {/* Title */}
-      <h3
-        className="text-base font-serif text-white/90 group-hover:text-white leading-snug mb-3 transition-colors"
-      >
+      <h3 className="text-base font-serif text-white/90 group-hover:text-white leading-snug mb-3 transition-colors">
         {title}
       </h3>
 
-      {/* Description */}
+      {isAiSafety && (
+        <span className="self-start mb-4 inline-flex items-center gap-1.5 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest border border-[#c084fc]/30 text-[#c084fc]/70 bg-[#c084fc]/5">
+          AI Safety
+        </span>
+      )}
+
       {description && (
         <p className="text-white/40 font-light text-sm leading-relaxed mb-5 flex-1 group-hover:text-white/60 transition-colors">
           {description}
         </p>
       )}
 
-      {/* Footer meta */}
       <div className="flex items-center gap-4 text-white/25 font-mono text-[11px] mt-auto pt-4 border-t border-white/5 group-hover:text-white/40 transition-colors">
         {langColor && (
           <span className="flex items-center gap-1.5">
@@ -177,7 +184,6 @@ function CategorySection({ category, repos }: { category: Category; repos: Repo[
       transition={{ duration: 0.5 }}
       className="mb-20"
     >
-      {/* Section header */}
       <div className="flex flex-col md:flex-row md:items-end gap-4 md:gap-12 mb-8 pb-6 border-b border-white/8">
         <div className="flex items-baseline gap-4">
           <span className="font-mono text-xs text-white/20 uppercase tracking-widest">{meta.index}</span>
@@ -185,28 +191,18 @@ function CategorySection({ category, repos }: { category: Category; repos: Repo[
         </div>
         <p className="text-white/40 font-light text-sm max-w-xl md:pb-0.5">{meta.description}</p>
         <div className="md:ml-auto flex-shrink-0">
-          <span
-            className="inline-block w-12 h-[2px]"
-            style={{ backgroundColor: meta.accent }}
-          />
+          <span className="inline-block w-12 h-[2px]" style={{ backgroundColor: meta.accent }} />
         </div>
       </div>
 
-      {/* Cards grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {repos.map((repo, i) => (
-          <RepoCard key={repo.id} repo={repo} index={i} accent={meta.accent} />
+          <RepoCard key={repo.id} repo={repo} index={i} accent={meta.accent} isAiSafety={AI_SAFETY_REPOS.has(repo.name)} />
         ))}
       </div>
     </motion.section>
   );
 }
-
-const CAT_PARAM_MAP: Record<string, Category> = {
-  "agentic-ai": "Agentic AI",
-  "enterprise":  "Enterprise AI Infrastructure",
-  "ai-safety":   "AI Safety & Research",
-};
 
 function getInitialFilter(): "All" | Category {
   const params = new URLSearchParams(window.location.search);
@@ -216,15 +212,16 @@ function getInitialFilter(): "All" | Category {
 
 export default function ProjectsPage() {
   const [repos, setRepos] = useState<Record<Category, Repo[]>>({
+    "LLM Systems": [],
     "Agentic AI": [],
-    "Enterprise AI Infrastructure": [],
-    "AI Safety & Research": [],
+    "NLP": [],
+    "Evals & Tooling": [],
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState<"All" | Category>(getInitialFilter);
+  const [totalRepos, setTotalRepos] = useState<number | null>(null);
 
-  // Sync filter when navbar subtab is clicked while already on /projects
   useEffect(() => {
     const handler = (e: Event) => {
       const cat = (e as CustomEvent<string | null>).detail;
@@ -235,16 +232,16 @@ export default function ProjectsPage() {
   }, []);
 
   useEffect(() => {
-    document.title = "Projects | Daria Zahaleanu";
+    document.title = "Portfolio | Daria Zahaleanu";
     const setMeta = (name: string, content: string, prop = false) => {
       const attr = prop ? "property" : "name";
       let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
       if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
       el.content = content;
     };
-    setMeta("description", "Open-source AI projects by Daria Zahaleanu — Agentic AI, Enterprise Infrastructure, and AI Safety.");
-    setMeta("og:title", "Projects | Daria Zahaleanu", true);
-    setMeta("og:description", "Agentic AI, Enterprise AI Infrastructure, and AI Safety projects by Daria Zahaleanu.", true);
+    setMeta("description", "Open-source AI projects by Daria Zahaleanu.");
+    setMeta("og:title", "Portfolio | Daria Zahaleanu", true);
+    setMeta("og:description", "LLM systems, agentic AI, NLP, and evals & tooling projects by Daria Zahaleanu.", true);
   }, []);
 
   useEffect(() => {
@@ -253,11 +250,13 @@ export default function ProjectsPage() {
         const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=50&type=public`);
         if (!res.ok) throw new Error(`${res.status}`);
         const data: Repo[] = await res.json();
+        setTotalRepos(data.filter((r) => !r.fork && !r.archived).length);
 
         const grouped: Record<Category, Repo[]> = {
+          "LLM Systems": [],
           "Agentic AI": [],
-          "Enterprise AI Infrastructure": [],
-          "AI Safety & Research": [],
+          "NLP": [],
+          "Evals & Tooling": [],
         };
 
         data
@@ -281,18 +280,16 @@ export default function ProjectsPage() {
     ? CATEGORIES
     : CATEGORIES.filter((c) => c === activeFilter);
 
-  const totalCount = Object.values(repos).reduce((s, r) => s + r.length, 0);
 
   return (
     <div className="min-h-screen bg-background text-foreground pt-32 pb-32 px-6 md:px-12">
       <div className="max-w-6xl mx-auto">
 
-        {/* Page header */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <Link href="/">
             <span className="inline-flex items-center gap-2 font-mono text-xs text-white/30 hover:text-primary transition-colors uppercase tracking-widest mb-14 cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
-              Back to Portfolio
+              Back
             </span>
           </Link>
 
@@ -302,9 +299,9 @@ export default function ProjectsPage() {
                 <div className="w-8 h-[1px] bg-primary" />
                 <span className="font-mono text-primary text-xs uppercase tracking-widest">Open Source</span>
               </div>
-              <h1 className="text-6xl md:text-7xl font-serif text-white mb-5 leading-none">Projects</h1>
+              <h1 className="text-6xl md:text-7xl font-serif text-white mb-5 leading-none">Portfolio</h1>
               <p className="text-white/40 font-light text-lg max-w-xl leading-relaxed">
-                Production implementations, research toolkits, and AI safety experiments — all open source.
+                Production implementations, research toolkits, and AI safety experiments.
               </p>
             </div>
 
@@ -319,9 +316,9 @@ export default function ProjectsPage() {
                 github.com/{GITHUB_USERNAME}
                 <ArrowUpRight className="w-3 h-3" />
               </a>
-              {!loading && (
+              {totalRepos !== null && (
                 <span className="font-mono text-xs text-white/20 uppercase tracking-widest">
-                  {totalCount} repositories
+                  {totalRepos} repositories
                 </span>
               )}
             </div>
@@ -342,7 +339,7 @@ export default function ProjectsPage() {
                   <button
                     key={f}
                     onClick={() => setActiveFilter(f)}
-                    className={`relative px-5 py-2 font-mono text-xs uppercase tracking-widest border transition-all duration-200 ${
+                    className={`px-5 py-2 font-mono text-xs uppercase tracking-widest border transition-all duration-200 ${
                       isActive
                         ? "text-background border-transparent"
                         : "border-white/10 text-white/40 hover:border-white/30 hover:text-white/80"
@@ -357,7 +354,6 @@ export default function ProjectsPage() {
           )}
         </motion.div>
 
-        {/* Loading */}
         {loading && (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {Array.from({ length: 9 }).map((_, i) => (
@@ -366,7 +362,6 @@ export default function ProjectsPage() {
           </div>
         )}
 
-        {/* Error */}
         {error && (
           <div className="flex flex-col items-center justify-center py-24 gap-4">
             <Loader2 className="w-8 h-8 text-white/20 animate-spin" />
@@ -374,7 +369,6 @@ export default function ProjectsPage() {
           </div>
         )}
 
-        {/* Categorised sections */}
         {!loading && !error && (
           <AnimatePresence mode="wait">
             <motion.div
@@ -391,7 +385,6 @@ export default function ProjectsPage() {
           </AnimatePresence>
         )}
 
-        {/* Footer link */}
         {!loading && !error && (
           <div className="text-center mt-4">
             <a

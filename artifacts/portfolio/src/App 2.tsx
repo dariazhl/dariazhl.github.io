@@ -104,7 +104,7 @@ function ProjectsWrapper() {
 
 function ResumeWrapper() {
   useEffect(() => {
-    document.title = "Resume | Daria Zahaleanu";
+    document.title = "CV | Daria Zahaleanu";
   }, []);
   return (
     <div className="min-h-screen bg-background text-foreground relative">

@@ -14,7 +14,7 @@ export default function ResumePage() {
         >
           <div className="flex items-center gap-3 justify-center">
             <div className="w-8 h-[1px] bg-primary" />
-            <span className="font-mono text-primary text-xs uppercase tracking-widest">Resume</span>
+            <span className="font-mono text-primary text-xs uppercase tracking-widest">CV</span>
             <div className="w-8 h-[1px] bg-primary" />
           </div>
 
@@ -23,7 +23,7 @@ export default function ResumePage() {
           </h1>
 
           <p className="text-lg text-muted-foreground font-light leading-relaxed">
-            For access to my full CV/resume, please contact me at{" "}
+            For access to my full CV, please contact me at{" "}
             <a
               href="mailto:daria.zahaleanu@gmail.com"
               className="text-primary hover:underline"

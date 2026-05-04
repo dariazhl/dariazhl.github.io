@@ -2,24 +2,19 @@ import { motion } from "framer-motion";
 
 const highlights = [
   {
-    stat: "35%",
-    label: "System Performance Gain",
-    context: "Netcompany, 2022"
-  },
-  {
-    stat: "10+",
-    label: "Engineers Led",
-    context: "Digital Transformation"
+    stat: "3+ years",
+    label: "Full-time experience",
+    context: ""
   },
   {
     stat: "MSc",
     label: "Artificial Intelligence",
-    context: "AI & Systems Research"
+    context: ""
   },
   {
-    stat: "3+",
-    label: "AI Safety Projects",
-    context: "Governance & XAI"
+    stat: "10+",
+    label: "AI Projects",
+    context: ""
   }
 ];
 
@@ -27,7 +22,7 @@ export function CareerHighlights() {
   return (
     <section className="w-full border-y border-border/50 bg-card/50">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border/50">
+       <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border/50 pl-8 md:pl-12">
           {highlights.map((item, index) => (
             <motion.div
               key={index}

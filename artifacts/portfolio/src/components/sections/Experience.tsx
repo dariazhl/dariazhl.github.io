@@ -5,16 +5,14 @@ import { ArrowUpRight } from "lucide-react";
 const jobs = [
   {
     company: "Netcompany",
-    title: "Lead Software Engineer",
+    title: "Senior Lead Software Engineer",
     period: "Feb 2023 – Present",
     location: "Copenhagen, Denmark",
     category: "Current",
-    description: "Fastest growing and most successful IT service company in Northern Europe. Architecting and delivering backend systems and AI-enabled workflows at scale, serving over 3 million users.",
+    description: "Fastest growing and most successful IT service company in Northern Europe",
     highlights: [
-      "Architected and delivered backend systems supporting data-intensive and AI-enabled workflows, including LLM-driven components, used by 3M+ users",
-      "Led end-to-end system design spanning API development, data ingestion, service orchestration, and AI execution flows",
-      "Built scalable backend services and data pipelines for large-scale distributed systems",
-      "Led a 10-person cross-functional team, acting as technical decision-maker on architecture and delivery"
+      "Backend systems and data workflows at scale, used by 3M+ users",
+      "Led system design and a cross-functional engineering team",
     ],
     tags: ["Python", "LLMs", "Backend", "API Design", "Data Engineering", "Team Lead"]
   },
@@ -23,13 +21,11 @@ const jobs = [
     title: "AI Engineer (part-time)",
     period: "Oct 2025 – Apr 2025",
     location: "Remote, United States",
-    category: "Current",
-    description: "Start-up building tools and educational resources that help organizations implement responsible AI. Building evaluation frameworks and modular pipelines for LLM-powered applications.",
+    category: "Industry",
+    description: "Start-up building tools and educational resources that help organizations implement responsible AI",
     highlights: [
       "Developed internal tooling and experimentation frameworks for building and evaluating LLM-powered applications",
-      "Built modular pipelines for prompt orchestration, retrieval augmentation, and evaluation of model outputs",
       "Contributed to the development of an online platform providing implementation frameworks for AI adoption",
-      "Designed benchmarking utilities and evaluation workflows to analyze model behavior"
     ],
     tags: ["LLM Evaluation", "RAG", "Prompt Engineering", "GenAI", "Python", "Responsible AI"]
   },
@@ -39,12 +35,12 @@ const jobs = [
     period: "Apr 2022 – Jan 2023",
     location: "Copenhagen, Denmark",
     category: "Industry",
-    description: "Researched and identified new customer experience enhancement features in the Dynamics 365 platform, collaborating across engineering, product, and design teams.",
+    description: "",
     highlights: [
       "Researched and identified new customer experience enhancement features in the Dynamics 365 platform",
       "Collaborated with engineering, product, and design teams to translate platform capabilities into customer-facing features"
     ],
-    tags: ["NLP", "Dynamics 365", "Data Pipelines", "AI Evaluation", "Backend", "Python"]
+    tags: ["NLP", "Dynamics 365", "Data Pipelines", "Backend", "Python"]
   },
   {
     company: "Brooklyn Investment Group",
@@ -52,13 +48,12 @@ const jobs = [
     period: "May – Jul 2019",
     location: "New York City, NY",
     category: "Industry",
-    description: "Company using AI models to forecast legal and regulatory risk affecting markets. Built and evaluated ML models and NLP pipelines for risk forecasting.",
+    description: "Company using AI models to forecast legal and regulatory risk affecting markets",
     highlights: [
-      "Built and evaluated classical ML models (logistic regression, tree-based models) alongside NLP pipelines for forecasting",
+      "Built and evaluated classical ML models alongside NLP pipelines for forecasting",
       "Designed training and validation workflows using cross-validation and precision/recall metrics",
-      "Deployed early-stage models to cloud environments (AWS, GCP), balancing accuracy with operational constraints"
     ],
-    tags: ["ML Models", "NLP", "AWS", "GCP", "Python", "Risk Forecasting"]
+    tags: ["ML Models", "Evaluation", "Risk Forecasting"]
   }
 ];
 

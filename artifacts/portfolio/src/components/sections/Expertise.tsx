@@ -4,35 +4,35 @@ import { Shield, BrainCircuit, Activity, Cpu, Network, Code2 } from "lucide-reac
 
 const expertise = [
   {
-    title: "NLP & LLM Systems",
-    description: "Building NLP systems for language understanding tasks, LLM evaluation frameworks, task benchmarks, and prompt evaluation pipelines.",
-    icon: BrainCircuit,
-  },
-  {
-    title: "Generative AI & Agents",
-    description: "Designing RAG pipelines with vector search and embedding layers, agent orchestration patterns, tool-calling agents, and prompt engineering.",
+    title: "LLM Systems & Agentic Architectures",
+    description: "RAG pipelines, retrieval design, multi-agent orchestration, tool-use systems, prompt pipelines.",
     icon: Network,
   },
   {
-    title: "Backend & Data Engineering",
-    description: "Python, FastAPI services, REST API design, SQL and relational data modeling, data ingestion pipelines for ML workflows, event-driven architectures (Kafka).",
-    icon: Code2,
-  },
-  {
-    title: "Cloud & MLOps",
-    description: "AWS, Azure, GCP, containerization (Docker), orchestration (Kubernetes), CI/CD pipelines, model deployment and serving, monitoring, drift detection.",
+    title: "Evaluation Infrastructure",
+    description: "Eval harnesses, behavioral benchmarking, regression testing for non-deterministic systems, model behavior analysis.",
     icon: Cpu,
   },
   {
-    title: "AI Evaluation",
-    description: "Designing benchmarking utilities, evaluation workflows, and model behavior analysis frameworks for production LLM and agentic systems.",
+    title: "Production AI Platforms",
+    description: "Containerized deployment on Azure/AWS/GCP, inference serving, observability for LLM systems, CI/CD for prompt and model artifacts.",
     icon: Activity,
   },
   {
-    title: "AI Safety & Governance",
-    description: "Implementing responsible AI practices — prompt injection defense, fairness evaluation, and measurable behavior in production AI models.",
+    title: "Reliability & AI Safety",
+    description: "Implementing responsible AI practices: prompt injection defense, fairness evaluation, and measurable behavior in production AI models.",
     icon: Shield,
-  }
+  },
+  {
+    title: "NLP",
+    description: "Building NLP systems for language understanding tasks and human reading comprehension.",
+    icon: BrainCircuit,
+  },
+  {
+    title: "Backend & Data Engineering",
+    description: "Python, FastAPI services, REST API design, SQL, data ingestion pipelines for ML workflows, event-driven architectures (Kafka).",
+    icon: Code2,
+  },
 ];
 
 export function Expertise() {
@@ -84,7 +84,6 @@ export function Expertise() {
             
             <div className="mt-auto pt-8 flex items-center text-xs font-mono text-primary/50 group-hover:text-primary transition-colors">
               <span className="w-4 h-[1px] bg-current mr-2" />
-              CAPABILITY_0{index + 1}
             </div>
           </motion.div>
         ))}

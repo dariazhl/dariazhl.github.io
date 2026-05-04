@@ -1,12 +1,30 @@
 [
   {
+    "title": "AI Tech Stacks Are Converging, But Lock-In Is Getting Worse",
+    "link": "https://dariaerynz.substack.com/p/ai-tech-stacks-are-converging-but",
+    "date": "April 23, 2026",
+    "dateISO": "2026-04-23",
+    "excerpt": "At a glance, modern AI stacks look modular. You can swap a model, change a vector database, or replace an orchestration layer without rewriting everything.…",
+    "category": "Writing",
+    "readTime": "3 min read"
+  },
+  {
+    "title": "What Building AI Systems Taught Me About Enterprise Architecture",
+    "link": "https://dariaerynz.substack.com/p/what-building-ai-systems-taught-me",
+    "date": "April 17, 2026",
+    "dateISO": "2026-04-17",
+    "excerpt": "The most expensive architectural decisions don t feel expensive when you make them. They show up later, when something you chose in week one quietly becomes a…",
+    "category": "Writing",
+    "readTime": "2 min read"
+  },
+  {
     "title": "Why Buying AI Won’t Make You Good at AI",
     "link": "https://dariaerynz.substack.com/p/why-buying-ai-wont-make-you-good",
     "date": "April 6, 2026",
     "dateISO": "2026-04-06",
-    "excerpt": "Most discussions about AI focus on productivity. That&#8217;s not the real issue. The real issue is capability.",
+    "excerpt": "Most discussions about AI focus on productivity. That s not the real issue. The real issue is capability.",
     "category": "Writing",
-    "readTime": "4 min read"
+    "readTime": "5 min read"
   },
   {
     "title": "AI Is Rewriting the Economics of Consulting",
@@ -15,7 +33,7 @@
     "dateISO": "2026-04-02",
     "excerpt": "AI is fundamentally reshaping consulting economics by compressing the billable hours that traditional firms depend on.",
     "category": "Writing",
-    "readTime": "6 min read"
+    "readTime": "5 min read"
   },
   {
     "title": "How AI Reprices Authority, Not Labor",

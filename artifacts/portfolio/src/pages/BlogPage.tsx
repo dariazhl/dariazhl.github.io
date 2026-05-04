@@ -67,7 +67,7 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground pt-32 pb-24 px-6 md:px-12">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -85,8 +85,8 @@ export default function BlogPage() {
             <span className="font-mono text-primary text-xs uppercase tracking-widest">Writing</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-serif text-white mb-4">Blog</h1>
-          <p className="text-muted-foreground font-light text-lg mb-16 max-w-2xl">
-            Thoughts on AI safety, interpretability, and the architecture of responsible machine learning systems.
+          <p className="text-muted-foreground font-light text-lg mb-16 max-w-3xl">
+            Thoughts on AI beyond the hype cycle: authority, leverage, and how institutions adapt.
           </p>
         </motion.div>
 

@@ -16,17 +16,17 @@ export function Contact() {
         >
           <div className="font-mono text-sm text-primary uppercase tracking-widest flex items-center justify-center gap-4">
             <span className="w-8 h-[1px] bg-primary" />
-            Initiate Contact
+            Contact
             <span className="w-8 h-[1px] bg-primary" />
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-serif text-white leading-tight">
-            Ready to build systems that <br className="hidden md:block"/>
-            <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">shape what's next?</span>
-          </h2>
-
+  
           <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">
-            Currently exploring AI Architect and AI Engineer roles at organizations tackling high-stakes AI alignment and infrastructure challenges.
+            Currently exploring AI Engineer/Architect roles at organizations shipping production AI in regulated environments.
+          </p>
+
+          <p className="text-sm text-muted-foreground/70 font-mono uppercase tracking-widest">
+            If you would like to see my CV, please get in touch.
           </p>
         </motion.div>
 
@@ -85,7 +85,7 @@ export function Contact() {
             <div className="p-4 border border-border rounded-full group-hover:border-primary/50 group-hover:bg-primary/5 transition-colors">
               <Terminal className="w-5 h-5" />
             </div>
-            <span className="font-mono text-xs uppercase tracking-wider">Resume</span>
+            <span className="font-mono text-xs uppercase tracking-wider">CV</span>
           </a>
         </motion.div>
       </div>

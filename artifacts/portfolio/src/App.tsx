@@ -9,14 +9,12 @@ import { Navbar } from "./components/sections/Navbar";
 import { Hero } from "./components/sections/Hero";
 import { CareerHighlights } from "./components/sections/CareerHighlights";
 import { About } from "./components/sections/About";
-import { Expertise } from "./components/sections/Expertise";
 import { Experience } from "./components/sections/Experience";
 import { Testimonials } from "./components/sections/Testimonials";
 import { Contact } from "./components/sections/Contact";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import ProjectsPage from "./pages/ProjectsPage";
-import CVPage from "./pages/CVPage";
 import ResumePage from "./pages/ResumePage";
 
 const queryClient = new QueryClient();
@@ -42,7 +40,6 @@ function Portfolio() {
         <Hero />
         <CareerHighlights />
         <About />
-        <Expertise />
         <Experience />
         {/* <Testimonials /> */}
         <Contact />
@@ -102,22 +99,10 @@ function ProjectsWrapper() {
   );
 }
 
-function CVWrapper() {
-  useEffect(() => {
-    document.title = "CV | Daria Zahaleanu";
-  }, []);
-  return (
-    <div className="min-h-screen bg-background text-foreground relative">
-      <div className="bg-noise" />
-      <Navbar />
-      <CVPage />
-    </div>
-  );
-}
 
 function ResumeWrapper() {
   useEffect(() => {
-    document.title = "Resume | Daria Zahaleanu";
+    document.title = "CV | Daria Zahaleanu";
   }, []);
   return (
     <div className="min-h-screen bg-background text-foreground relative">
@@ -136,7 +121,6 @@ function Router() {
       <Route path="/blog" component={BlogWrapper} />
       <Route path="/blog/:slug" component={BlogPostWrapper} />
       <Route path="/projects" component={ProjectsWrapper} />
-      <Route path="/cv" component={CVWrapper} />
       <Route path="/resume" component={ResumeWrapper} />
       <Route component={NotFound} />
     </Switch>

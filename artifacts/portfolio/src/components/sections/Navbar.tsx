@@ -5,29 +5,27 @@ import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 
 const scrollLinks = [
-  { name: "About", href: "#about" },
-  { name: "Expertise", href: "#expertise" },
+  { name: "About",      href: "#about"      },
   { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
 ];
 
-const projectSubtabs = [
-  { name: "All Projects", cat: null,          accent: "#ffffff" },
-  { name: "Agentic AI",   cat: "agentic-ai",  accent: "#00f5c4" },
-  { name: "Enterprise AI Infrastructure", cat: "enterprise", accent: "#4f8ef7" },
-  { name: "AI Safety & Research",         cat: "ai-safety",  accent: "#c084fc" },
+const portfolioSubtabs = [
+  { name: "All",             cat: null,          accent: "#ffffff" },
+  { name: "LLM Systems",     cat: "llm-systems", accent: "#00f5c4" },
+  { name: "Agentic AI",      cat: "agentic-ai",  accent: "#4f8ef7" },
+  { name: "NLP",             cat: "nlp",         accent: "#f59e0b" },
+  { name: "Evals & Tooling", cat: "evals",       accent: "#c084fc" },
 ];
 
-const otherPageLinks = [
+const pageLinks = [
   { name: "Blog", href: "/blog" },
-  { name: "CV",   href: "/cv"   },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [projectsOpen, setProjectsOpen] = useState(false);
-  const projectsRef = useRef<HTMLDivElement>(null);
+  const [portfolioOpen, setPortfolioOpen] = useState(false);
+  const portfolioRef = useRef<HTMLDivElement>(null);
   const [location] = useLocation();
   const isHome = location === "/" || location === "";
   const isProjects = location.startsWith("/projects");
@@ -38,11 +36,10 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close dropdown if clicking outside
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (projectsRef.current && !projectsRef.current.contains(e.target as Node)) {
-        setProjectsOpen(false);
+      if (portfolioRef.current && !portfolioRef.current.contains(e.target as Node)) {
+        setPortfolioOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClick);
@@ -55,7 +52,7 @@ export function Navbar() {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const projectHref = (cat: string | null) =>
+  const portfolioHref = (cat: string | null) =>
     cat ? `/projects?cat=${cat}` : "/projects";
 
   return (
@@ -77,6 +74,7 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
+            {/* Scroll links */}
             {scrollLinks.map((link) => (
               <button
                 key={link.name}
@@ -88,14 +86,12 @@ export function Navbar() {
               </button>
             ))}
 
-            <div className="w-px h-4 bg-border/50" />
-
-            {/* Projects with dropdown */}
+            {/* Portfolio with dropdown */}
             <div
-              ref={projectsRef}
+              ref={portfolioRef}
               className="relative"
-              onMouseEnter={() => setProjectsOpen(true)}
-              onMouseLeave={() => setProjectsOpen(false)}
+              onMouseEnter={() => setPortfolioOpen(true)}
+              onMouseLeave={() => setPortfolioOpen(false)}
             >
               <Link href="/projects">
                 <span
@@ -104,11 +100,11 @@ export function Navbar() {
                     isProjects ? "text-primary" : "text-muted-foreground hover:text-white"
                   )}
                 >
-                  Projects
+                  Portfolio
                   <ChevronDown
                     className={cn(
                       "w-3 h-3 transition-transform duration-200",
-                      projectsOpen ? "rotate-180" : "rotate-0"
+                      portfolioOpen ? "rotate-180" : "rotate-0"
                     )}
                   />
                   <span className={cn(
@@ -119,7 +115,7 @@ export function Navbar() {
               </Link>
 
               <AnimatePresence>
-                {projectsOpen && (
+                {portfolioOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: 8, scale: 0.97 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -127,12 +123,11 @@ export function Navbar() {
                     transition={{ duration: 0.18, ease: "easeOut" }}
                     className="absolute top-[calc(100%+14px)] left-1/2 -translate-x-1/2 w-64 bg-background/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/60 overflow-hidden"
                   >
-                    {/* pointer triangle */}
                     <div className="absolute -top-[5px] left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-background/95 border-l border-t border-white/10 rotate-45" />
 
                     <div className="py-2">
-                      {projectSubtabs.map((tab, i) => {
-                        const href = projectHref(tab.cat);
+                      {portfolioSubtabs.map((tab, i) => {
+                        const href = portfolioHref(tab.cat);
                         const isCurrent =
                           isProjects &&
                           (tab.cat
@@ -147,7 +142,7 @@ export function Navbar() {
                           >
                             <div
                               onClick={() => {
-                                setProjectsOpen(false);
+                                setPortfolioOpen(false);
                                 window.history.pushState({}, "", href);
                                 window.dispatchEvent(new CustomEvent("projects:filter", { detail: tab.cat }));
                               }}
@@ -181,7 +176,8 @@ export function Navbar() {
               </AnimatePresence>
             </div>
 
-            {otherPageLinks.map((link) => (
+            {/* Page links */}
+            {pageLinks.map((link) => (
               <Link key={link.name} href={link.href}>
                 <span
                   className={cn(
@@ -197,6 +193,15 @@ export function Navbar() {
                 </span>
               </Link>
             ))}
+
+            {/* Contact scroll link */}
+            <button
+              onClick={() => scrollTo("#contact")}
+              className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-white transition-colors relative group"
+            >
+              Contact
+              <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300" />
+            </button>
           </nav>
 
           {/* Mobile Toggle */}
@@ -235,17 +240,17 @@ export function Navbar() {
 
               <div className="w-16 h-px bg-border/50 my-1" />
 
-              {/* Projects group in mobile */}
+              {/* Portfolio group in mobile */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: scrollLinks.length * 0.08 }}
                 className="w-full"
               >
-                <p className="font-mono text-xs text-white/30 uppercase tracking-widest text-center mb-3">Projects</p>
+                <p className="font-mono text-xs text-white/30 uppercase tracking-widest text-center mb-3">Portfolio</p>
                 <div className="flex flex-col items-center gap-2">
-                  {projectSubtabs.map((tab) => (
-                    <Link key={tab.name} href={projectHref(tab.cat)}>
+                  {portfolioSubtabs.map((tab) => (
+                    <Link key={tab.name} href={portfolioHref(tab.cat)}>
                       <span
                         onClick={() => setMobileMenuOpen(false)}
                         className="flex items-center gap-2 font-serif text-xl text-white/70 hover:text-white transition-colors cursor-pointer"
@@ -260,7 +265,7 @@ export function Navbar() {
 
               <div className="w-16 h-px bg-border/50 my-1" />
 
-              {otherPageLinks.map((link, i) => (
+              {pageLinks.map((link, i) => (
                 <motion.div
                   key={link.name}
                   initial={{ opacity: 0, y: 20 }}
@@ -277,6 +282,16 @@ export function Navbar() {
                   </Link>
                 </motion.div>
               ))}
+
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: (scrollLinks.length + 2) * 0.08 }}
+                onClick={() => scrollTo("#contact")}
+                className="font-serif text-3xl text-white hover:text-primary transition-colors"
+              >
+                Contact
+              </motion.button>
             </nav>
           </motion.div>
         )}
